@@ -1,4 +1,4 @@
-package com.dzienki.userapi.entity;
+package com.dzienki.userapi.manager.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

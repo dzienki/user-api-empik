@@ -1,11 +1,17 @@
 package com.dzienki.userapi.client.dto;
 
 import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder(toBuilder = true)
 public class GithubUserDto {
 
     private String login;
@@ -30,10 +36,10 @@ public class GithubUserDto {
     private String company;
     private String blog;
     private String location;
-    private Object email;
-    private Object hireable;
-    private Object bio;
-    private Object twitter_username;
+    private String email;
+    private String hireable;
+    private String bio;
+    private String twitter_username;
     private long public_repos;
     private long public_gists;
     private long followers;

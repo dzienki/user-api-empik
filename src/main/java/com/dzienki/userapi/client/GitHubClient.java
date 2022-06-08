@@ -3,6 +3,7 @@ package com.dzienki.userapi.client;
 import com.dzienki.userapi.client.dto.GithubUserDto;
 import com.dzienki.userapi.exception.InternalServerException;
 import com.dzienki.userapi.exception.NotFoundException;
+import com.dzienki.userapi.exception.ServiceUnavailableException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.URI;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GitHubClient {
 
-    private final String ENDPOINT_URL = "https://api.github.com/users/";
+    private static final String ENDPOINT_URL = "https://api.github.com/users/";
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
 
@@ -42,7 +43,7 @@ public class GitHubClient {
             } else if (response.statusCode() == 404) {
                 throw new NotFoundException("User not found");
             } else {
-                throw new InternalServerException();
+                throw new ServiceUnavailableException();
             }
         } catch (IOException | InterruptedException e) {
             throw new InternalServerException(e);
